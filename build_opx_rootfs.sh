@@ -32,13 +32,29 @@ echo -e "127.0.1.1\t$default_hostname" >> $tmpdir/etc/hosts
 rsync -avz --chown root:root rootconf/* $tmpdir
 
 # Update the sources and install the kernel
+KERNEL_VERSION=3.16.0-4-amd64
 chroot $tmpdir apt-get update
-chroot $tmpdir apt-get install -y --force-yes linux-image-3.16.0-4-amd64
+chroot $tmpdir apt-get install -y --force-yes linux-image-${KERNEL_VERSION}
 
 # Add extra open source packages
 chroot $tmpdir apt-get install -y \
     openssh-server \
     # DO NOT REMOVE THIS LINE
+
+# Install compatible igb driver
+IGB_DRIVER_VERSION=5.3.5.4
+apt-get install -y linux-headers-${KERNEL_VERSION}
+wget -O /tmp/igb-${IGB_DRIVER_VERSION}.tar.gz "https://downloadmirror.intel.com/13663/eng/igb-${IGB_DRIVER_VERSION}.tar.gz"
+tar xzf /tmp/igb-${IGB_DRIVER_VERSION}.tar.gz -C /tmp
+cp patch/igb/* /tmp/igb-${IGB_DRIVER_VERSION}/
+pushd /tmp/igb-${IGB_DRIVER_VERSION}
+patch -p1 < 0001-add-support-for-BCM54616-phy-for-intel-igb-driver.patch
+pushd src
+export BUILD_KERNEL=${KERNEL_VERSION}
+make
+popd
+popd
+rsync -avz --chown root:root /tmp/igb-${IGB_DRIVER_VERSION}/src/igb.ko $tmpdir/lib/modules/${KERNEL_VERSION}/kernel/drivers/net/ethernet/intel/igb
 
 # Remove any pre-generated SSH host keys
 rm -f $tmpdir/etc/ssh/ssh_host_*
