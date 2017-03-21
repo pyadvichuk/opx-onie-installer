@@ -56,6 +56,14 @@ popd
 popd
 rsync -avz --chown root:root /tmp/igb-${IGB_DRIVER_VERSION}/src/igb.ko $tmpdir/lib/modules/${KERNEL_VERSION}/kernel/drivers/net/ethernet/intel/igb
 
+## Config DHCP for eth0
+sudo tee -a $tmpdir/etc/network/interfaces > /dev/null <<EOF
+
+auto eth0
+allow-hotplug eth0
+iface eth0 inet dhcp
+EOF
+
 # Remove any pre-generated SSH host keys
 rm -f $tmpdir/etc/ssh/ssh_host_*
 
