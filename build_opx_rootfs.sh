@@ -42,7 +42,7 @@ chroot $tmpdir apt-get install -y \
     # DO NOT REMOVE THIS LINE
 
 # Install compatible igb driver
-IGB_DRIVER_VERSION=5.3.5.4
+IGB_DRIVER_VERSION=5.3.5.10
 apt-get install -y linux-headers-${KERNEL_VERSION}
 wget -O /tmp/igb-${IGB_DRIVER_VERSION}.tar.gz "https://downloadmirror.intel.com/13663/eng/igb-${IGB_DRIVER_VERSION}.tar.gz"
 tar xzf /tmp/igb-${IGB_DRIVER_VERSION}.tar.gz -C /tmp
