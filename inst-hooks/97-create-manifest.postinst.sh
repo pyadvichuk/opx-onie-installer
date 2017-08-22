@@ -3,6 +3,9 @@
 # Create a JSON file, with version information for all installed OPX packages
 
 OUTFILE=/etc/opx/manifest.json
+
+mkdir -p /etc/opx
+
 echo '{ "packages": [' >$OUTFILE
 i=0
 sep=''
