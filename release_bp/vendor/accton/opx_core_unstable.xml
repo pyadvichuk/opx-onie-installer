@@ -5,6 +5,7 @@
   <type>distro</type>
   <default_solver/>
 
+  <xi:include href="../../repo/local.xml"/>
   <xi:include href="../../repo/opx_unstable.xml"/>
   <xi:include href="../../repo/opx_non_free_unstable.xml"/>
   <xi:include href="../../repo/debian.xml"/>
