@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='ASCII'?>
 <package_set xmlns:xi="http://www.w3.org/2001/XInclude">
-  <!-- Packages to be installed on a Accton AS7512-32X target -->
+  <!-- Packages to be installed on a EdgeCore AS7512-32X target -->
 
-  <name>OpenSwitch Accton AS7512-32X Packages</name>
+  <name>OpenSwitch EdgeCore AS7512-32X Packages</name>
   <type>distro</type>
   <platform>accton_as7512_32x</platform>
   <default_solver/>
@@ -16,7 +16,7 @@
 
   <package_list>
     <package name="opx-cavium-modules" />
-    <package name="opx-accton-as7512-32x" />
+    <package name="opx-edgecore-as7512-32x" />
   </package_list>
 
   <!--<package_list>

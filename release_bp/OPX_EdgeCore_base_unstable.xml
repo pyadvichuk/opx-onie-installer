@@ -41,12 +41,12 @@ blueprint files.
   <xi:include href="opx_debian_base.xml"/>
 
   <!-- Specify Debian packges to be installed on all Cavium compatible platforms -->
-  <xi:include href="vendor/accton/opx_core.xml"/>
+  <xi:include href="vendor/edgecore/opx_core_unstable.xml"/>
 
   <!-- Specify Debian packges to be installed on each particular Cavium compatible
        platform
   -->
-  <xi:include href="vendor/accton/as7512/opx_hw.xml"/>
+  <xi:include href="vendor/edgecore/as7512/opx_hw_unstable.xml"/>
 
   <!-- Scripts to run after installation of packages is complete -->
   <inst_hook>97-create-manifest.postinst.sh</inst_hook>
