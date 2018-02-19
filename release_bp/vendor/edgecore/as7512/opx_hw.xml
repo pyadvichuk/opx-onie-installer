@@ -15,11 +15,6 @@
   <xi:include href="../../../repo/debian_backports.xml"/>
 
   <package_list>
-    <package name="opx-cavium-modules" />
     <package name="opx-edgecore-as7512-32x" />
   </package_list>
-
-  <!--<package_list>
-    <package name="opx-udrvr-ethernet" />
-  </package_list>-->
 </package_set>

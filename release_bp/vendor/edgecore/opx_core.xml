@@ -13,6 +13,7 @@
   <xi:include href="../../repo/debian_backports.xml"/>
 
   <package_list>
+    <package name="logrotate"/>
     <package name="opx-kernel-dell-3.16.0-4-amd64"/>
   </package_list>
 </package_set>
