@@ -37,7 +37,7 @@ blueprint files.
   </output_format>
 
   <!-- Specify the tarfile containing the rootfs image -->
-  <xi:include href="rootfs.xml"/>
+  <xi:include href="rootfs_jessie.xml"/>
 
   <!-- Specify Debian packges to be installed on all platforms -->
   <xi:include href="opx_debian_base.xml"/>

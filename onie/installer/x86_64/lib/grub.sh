@@ -79,6 +79,7 @@ insmod ext2
 
 EOF
     # Add menu entries for OPX
+
     cat >> $grub_cfg_file <<EOF
 menuentry 'OPX-A' --class gnu-linux --class gnu --class os {
     set     root=(lvm/$OPX_VOLUME_GROUP-$OPX_SYSROOT1_NAME)
@@ -86,7 +87,7 @@ menuentry 'OPX-A' --class gnu-linux --class gnu --class os {
     linux   /vmlinuz \\
             $GRUB_CMDLINE_LINUX \\
             root=/dev/mapper/$OPX_VOLUME_GROUP-$OPX_SYSROOT1_NAME rw \\
-            quiet
+            quiet net.ifnames=0 iomem=relaxed
     initrd  /initrd.img
 }
 
@@ -96,7 +97,7 @@ menuentry 'OPX-B' --class gnu-linux --class gnu --class os {
     linux   /vmlinuz \\
             $GRUB_CMDLINE_LINUX \\
             root=/dev/mapper/$OPX_VOLUME_GROUP-$OPX_SYSROOT2_NAME rw \\
-            quiet
+            quiet net.ifnames=0 iomem=relaxed
     initrd  /initrd.img
 }
 
